@@ -37,12 +37,12 @@
     "prettier:check": "prettier --check src",
     "prettier:write": "prettier --write src"
   },
-
   "devDependencies": {
     "@types/node": "^24.0.10",
     "astro": "^5.11.0",
     "prettier": "^2.7.1",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vite": "^7.0.2"
   },
   "repository": {
     "type": "git",
