@@ -49,6 +49,10 @@ jobs:
         with:
           run_install: false
 
+      - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
         # --no-git-checks is needed, because this pipelies runs on the pushed tag which is in a detached HEAD state
       - run: pnpm publish --access public --no-git-checks
         env:
