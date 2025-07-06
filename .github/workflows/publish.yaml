@@ -54,7 +54,8 @@ jobs:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
         # --no-git-checks is needed, because this pipelies runs on the pushed tag which is in a detached HEAD state
-      - run: pnpm publish --access public --no-git-checks
+        # we need to use npm for publishing here, since pnpm ignores the registry-url setting
+      - run: npm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -80,6 +81,6 @@ jobs:
           run_install: false
 
         # --no-git-checks is needed, because this pipelies runs on the pushed tag which is in a detached HEAD state
-      - run: pnpm publish --access public --no-git-checks
+      - run: npm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
