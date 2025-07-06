@@ -1,0 +1,54 @@
+{
+  "name": "astro-posthog",
+  "version": "1.0.0",
+  "description": "Posthog integration for Astro",
+  "type": "module",
+  "keywords": [
+    "astro-integration",
+    "astro-component",
+    "posthog",
+    "analytics",
+    "tracking"
+  ],
+  "contributors": [
+    {
+      "name": "Johannes Przymusinski",
+      "email": "johannes.przymusinski@jop-software.de",
+      "url": "https://jop-software.de"
+    }
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "import": "./dist/astro-posthog.es.js",
+      "require": "./dist/astro-posthog.umd.js"
+    }
+  },
+  "main": "./dist/astro-posthog.umd.js",
+  "module": "./dist/astro-posthog.es.js",
+  "files": [
+    "dist"
+  ],
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "build": "vite build && tsc --emitDeclarationOnly",
+    "build:watch": "vite build --watch",
+    "dev": "vite",
+    "prettier:check": "prettier --check src",
+    "prettier:write": "prettier --write src"
+  },
+
+  "devDependencies": {
+    "@types/node": "^24.0.10",
+    "astro": "^5.11.0",
+    "prettier": "^2.7.1",
+    "typescript": "^5.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jop-software/astro-posthog"
+  },
+  "dependencies": {
+    "posthog-js": "^1.256.2"
+  }
+}
