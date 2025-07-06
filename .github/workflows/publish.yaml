@@ -42,20 +42,15 @@ jobs:
       # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v3
         with:
-          node-version: '22'
+          node-version: '22.x'
           registry-url: 'https://npm.pkg.github.com'
 
       - uses: pnpm/action-setup@v2
         with:
           run_install: false
 
-      - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
-        env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
         # --no-git-checks is needed, because this pipelies runs on the pushed tag which is in a detached HEAD state
-        # we need to use npm for publishing here, since pnpm ignores the registry-url setting
-      - run: npm publish --access public --no-git-checks
+      - run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -81,6 +76,6 @@ jobs:
           run_install: false
 
         # --no-git-checks is needed, because this pipelies runs on the pushed tag which is in a detached HEAD state
-      - run: npm publish --access public --no-git-checks
+      - run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
