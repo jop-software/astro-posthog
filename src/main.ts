@@ -12,9 +12,9 @@ const createPlugin = (config: PluginConfig): AstroIntegration => {
 			"astro:config:setup": async ({ injectScript }) => {
 				injectScript(
 					"page",
-					`import posthog from 'posthog-js';posthog.init(${
+					`import posthog from 'posthog-js';posthog.init('${
 						config.posthogKey
-					}, ${JSON.stringify(config)});`
+					}', ${JSON.stringify(config)});`
 				);
 			},
 		},
